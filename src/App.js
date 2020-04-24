@@ -159,8 +159,8 @@ function Music() {
   }
   const listItems = musicList.map((item) => (
     <p key={item[2]}>
-      <span
-        className="span20"
+      <button
+        className="button-3d"
         onClick={() => {
           musicList.map((item1) => {
             if (parseInt(item1[2]) === parseInt(item[2])) {
@@ -170,8 +170,9 @@ function Music() {
           })
         }}
       >
+        {' '}
         {item[2]}
-      </span>
+      </button>
       <span>{item[1]}</span>
     </p>
   ))
@@ -186,10 +187,11 @@ function Music() {
   }, [music, playOrder])
 
   return (
-    <div className="Music">
+    <div>
       {/* ###### */}
       {/* 顺序、随机、循环播放 */}
       <button
+        className="button-3d-1"
         onClick={() => {
           setPlayOrder('1')
           setPlayOrderStatus('随机播放')
@@ -199,6 +201,7 @@ function Music() {
         随机播放
       </button>
       <button
+        className="button-3d-1 span10"
         onClick={() => {
           setPlayOrder('0')
           setPlayOrderStatus('顺序播放')
@@ -208,6 +211,7 @@ function Music() {
         顺序播放
       </button>
       <button
+        className="button-3d-1"
         onClick={() => {
           setPlayOrder('2')
           setPlayOrderStatus('单曲循环')
@@ -219,6 +223,7 @@ function Music() {
       {/* ###### */}
       {/* 上一首&下一首 */}
       <button
+        className="button-3d-1 span10"
         onClick={() => {
           let index = orderList.indexOf((parseInt(music[2]) - 1).toString())
           if (index === -1) {
@@ -237,6 +242,7 @@ function Music() {
         上一首
       </button>
       <button
+        className="button-3d-1"
         onClick={() => {
           let index = orderList.indexOf((parseInt(music[2]) + 1).toString())
           if (index === -1) {
@@ -258,10 +264,11 @@ function Music() {
       {/* ###### */}
       {/* 信息展示 */}
       <p>
-        {music[1]}
-        <span className="span20">{music[2]}</span>
+        <span className="span20">正在播放第{music[2]}首歌</span>
         {playOrderStatus}
       </p>
+      <p>{music[1]}</p>
+
       {/* ###### */}
       {/* 音乐 */}
       <audio
@@ -273,7 +280,7 @@ function Music() {
       ></audio>
       {/* ###### */}
       {/* 音乐列表 */}
-      <div style={{ width: '40vw', height: '50vh', overflow: 'auto' }}>
+      <div style={{ width: '600px', height: '450px', overflow: 'auto' }}>
         {listItems}
       </div>
     </div>
