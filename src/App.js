@@ -1,5 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react'
 import './App.css'
+import previous from './icons/previous.svg'
+import next from './icons/next.svg'
+import random from './icons/random.svg'
+import circulationOne from './icons/circulationOne.svg'
+import circulation from './icons/circulation.svg'
+import play from './icons/play.svg'
 const musicList = [
   [
     'music/1.flac',
@@ -159,8 +165,10 @@ function Music() {
   }
   const listItems = musicList.map((item) => (
     <p key={item[2]}>
-      <button
-        className="button-3d"
+      <img
+        src={play}
+        className="icon20"
+        alt="play"
         onClick={() => {
           musicList.map((item1) => {
             if (parseInt(item1[2]) === parseInt(item[2])) {
@@ -169,11 +177,11 @@ function Music() {
             }
           })
         }}
-      >
-        {' '}
-        {item[2]}
-      </button>
+      />
       <span>{item[1]}</span>
+      <span className="span10" style={{ color: 'pink', fontSize: '1.4rem' }}>
+        {item[2]}
+      </span>
     </p>
   ))
 
@@ -190,40 +198,43 @@ function Music() {
     <div>
       {/* ###### */}
       {/* 顺序、随机、循环播放 */}
-      <button
-        className="button-3d-1"
+      <img
+        src={random}
+        className="icon"
+        alt="random"
         onClick={() => {
           setPlayOrder('1')
           setPlayOrderStatus('随机播放')
           mPlay(musicActive.current)
         }}
-      >
-        随机播放
-      </button>
-      <button
-        className="button-3d-1 span10"
+      />
+      <img
+        src={circulation}
+        className="icon span10"
+        alt="circulation"
         onClick={() => {
           setPlayOrder('0')
           setPlayOrderStatus('顺序播放')
           mPlay(musicActive.current)
         }}
-      >
-        顺序播放
-      </button>
-      <button
-        className="button-3d-1"
+      />
+
+      <img
+        src={circulationOne}
+        className="icon"
+        alt="circulationOne"
         onClick={() => {
           setPlayOrder('2')
           setPlayOrderStatus('单曲循环')
           mPlay(musicActive.current)
         }}
-      >
-        循环播放
-      </button>
+      />
       {/* ###### */}
       {/* 上一首&下一首 */}
-      <button
-        className="button-3d-1 span10"
+      <img
+        src={previous}
+        className="icon span10"
+        alt="previous"
         onClick={() => {
           let index = orderList.indexOf((parseInt(music[2]) - 1).toString())
           if (index === -1) {
@@ -238,11 +249,11 @@ function Music() {
             })
           }
         }}
-      >
-        上一首
-      </button>
-      <button
-        className="button-3d-1"
+      />
+      <img
+        src={next}
+        className="icon"
+        alt="next"
         onClick={() => {
           let index = orderList.indexOf((parseInt(music[2]) + 1).toString())
           if (index === -1) {
@@ -257,9 +268,7 @@ function Music() {
             })
           }
         }}
-      >
-        下一首
-      </button>
+      />
 
       {/* ###### */}
       {/* 信息展示 */}
@@ -268,7 +277,6 @@ function Music() {
         {playOrderStatus}
       </p>
       <p>{music[1]}</p>
-
       {/* ###### */}
       {/* 音乐 */}
       <audio
