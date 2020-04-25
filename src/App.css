@@ -28,7 +28,7 @@ button:hover {
   position: relative;
   background: #ecd300;
   background: radial-gradient(hsl(54, 100%, 50%), hsl(54, 100%, 40%));
-  font-size: 1.4rem;
+  font-size: 1rem;
   text-shadow: 0 -1px 0 #c3af07;
   color: white;
   border: 1px solid hsl(54, 100%, 20%);
@@ -67,8 +67,8 @@ button:hover {
   color: white;
   border: 1px solid hsl(54, 100%, 20%);
   /* border-radius: 100%; */
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
   z-index: 4;
   outline: none;
 

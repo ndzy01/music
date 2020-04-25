@@ -218,7 +218,7 @@ function Music() {
           mPlay(musicActive.current)
         }}
       >
-        单曲循环
+        循环播放
       </button>
       {/* ###### */}
       {/* 上一首&下一首 */}
